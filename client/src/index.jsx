@@ -7,13 +7,13 @@ import RepoList from './components/RepoList.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       repos: []
     }
-
+    this.onSearch = this.onSearch.bind(this);
   }
 
-  search (term) {
+  onSearch (term) {
     console.log(`${term} was searched`);
     // TODO
   }
@@ -22,7 +22,7 @@ class App extends React.Component {
     return (<div>
       <h1>Github Fetcher</h1>
       <RepoList repos={this.state.repos}/>
-      <Search onSearch={this.search.bind(this)}/>
+      <Search onSearch={this.onSearch}/>
     </div>)
   }
 }
