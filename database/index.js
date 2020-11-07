@@ -29,7 +29,6 @@ let save = (data, callback) => {
   }
   Repo.insertMany(repos, (err) => {
     if (err) {
-      console.log(err);
       callback(err);
     } else {
       console.log('added to db!');
@@ -38,4 +37,15 @@ let save = (data, callback) => {
   })
 }
 
+let find = (callback) => {
+  Repo.find({}).sort('id').limit(25).exec(function(err, repos) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, repos);
+    }
+  });
+}
+
 module.exports.save = save;
+module.exports.find = find;
