@@ -12,6 +12,7 @@ class App extends React.Component {
       repos: []
     }
     this.onSearch = this.onSearch.bind(this);
+    this.showRepos = this.showRepos.bind(this);
   }
 
   onSearch (term) {
@@ -23,21 +24,23 @@ class App extends React.Component {
       data: JSON.stringify(obj),
       success: () => {
         console.log('success');
+        this.showRepos();
       },
       contentType: "application/json",
-      dataType: 'json'
     });
+  }
+
+  showRepos() {
+    axios.get('/repos')
+    .then((response) => {
+      this.setState({repos: response.data})
+    })
+    .catch((err) => {console.log(err);})
   }
 
   componentDidMount() {
     // send a get request with axios
-    axios.get('/repos')
-    .then((response) => {
-      console.log("working!");
-      console.log(response.data);
-      this.setState({repos: response.data})
-    })
-    .catch((err) => {console.log(err);})
+    this.showRepos();
   }
 
   render () {

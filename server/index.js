@@ -9,13 +9,13 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
 app.post('/repos', function (req, res) {
-  var user = req.body.term;
+  var user = req.body.repoName;
   github.getReposByUsername(user, (err) => {
     if (err) {
       console.log(err);
       res.sendStatus(404);
     } else {
-      res.sendStatus(200);
+      res.sendStatus(201);
     }
   });
 });

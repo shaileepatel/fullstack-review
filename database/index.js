@@ -38,7 +38,7 @@ let save = (data, callback) => {
 }
 
 let find = (callback) => {
-  Repo.find({}).sort('id').limit(25).exec(function(err, repos) {
+  Repo.find({}).sort({id: -1}).limit(25).exec(function(err, repos) {
     if (err) {
       callback(err, null);
     } else {
