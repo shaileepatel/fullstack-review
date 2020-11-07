@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -28,11 +29,22 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+    // send a get request with axios
+    axios.get('/repos')
+    .then((response) => {
+      console.log("working!");
+      console.log(response.data);
+      this.setState({repos: response.data})
+    })
+    .catch((err) => {console.log(err);})
+  }
+
   render () {
     return (<div>
       <h1>Github Fetcher</h1>
-      <RepoList repos={this.state.repos}/>
       <Search onSearch={this.onSearch}/>
+      <RepoList repos={this.state.repos}/>
     </div>)
   }
 }
