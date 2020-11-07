@@ -39,7 +39,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // send a get request with axios
     this.showRepos();
   }
 
