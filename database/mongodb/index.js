@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/fetcher');
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log('connected to db');
+  console.log('connected to mongodb');
 });
 
 let repoSchema = new mongoose.Schema({

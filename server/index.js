@@ -1,7 +1,7 @@
 const express = require('express');
 var bodyParser = require('body-parser');
 var github = require('../helpers/github.js')
-var db = require('../database/index.js')
+var db = require('../database/mysql')
 
 let app = express();
 

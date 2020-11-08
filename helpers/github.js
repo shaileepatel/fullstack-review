@@ -1,6 +1,6 @@
 const axios = require('axios');
 const config = require('../config.js');
-var db = require('../database/index.js')
+var db = require('../database/mysql')
 
 let options = {
   headers: {
